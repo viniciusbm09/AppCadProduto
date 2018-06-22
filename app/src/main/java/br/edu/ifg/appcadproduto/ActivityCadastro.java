@@ -45,7 +45,7 @@ public class ActivityCadastro extends AppCompatActivity {
 
                 //Exibe uma notificação na  tela
                 if(id!=-1){
-                    Toast.makeText(getApplicationContext(),"Produto salvo com sucesso",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Produto " + id + " salvo com sucesso",Toast.LENGTH_LONG).show();
                     //finaliza a activity
                     finish();
 

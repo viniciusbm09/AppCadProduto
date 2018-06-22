@@ -36,5 +36,11 @@ public class Produto {
         this.estoque = estoque;
     }
 
-
+    @Override
+    public String toString() {
+        return  "ID: " + "\t\t\t\t\t\t\t\t\t"+ id +
+                "\nNome: " + "\t\t\t\t\t\t"+ nome +
+                "\nEstoque:" + "\t\t\t\t\t"+ estoque +
+                "\nValor unitário: " + "\t"+ vlUnitario;
+    }
 }//fim da classe

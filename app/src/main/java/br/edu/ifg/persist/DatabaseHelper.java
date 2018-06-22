@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import br.edu.ifg.util.MyApp;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     //variável estática com o nome da base de dados
     private static final String BANCO_DADOS = "bdados";
@@ -13,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper instance;
 
     //Método construtor
-    private DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, BANCO_DADOS,null, VERSAO);
     }
 
@@ -43,4 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+
 }

@@ -13,7 +13,7 @@ public interface ProdutoDAO {
     void    alterar(Produto p);
     void    excluir(Produto p);
 
-    List<String> listarTodos();
+    List<Produto> listarTodos();
 
     //Cursor listarProdutos();
 
