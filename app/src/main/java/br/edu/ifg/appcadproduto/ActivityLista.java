@@ -1,6 +1,9 @@
 package br.edu.ifg.appcadproduto;
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +13,8 @@ import java.util.List;
 import br.edu.ifg.model.Produto;
 import br.edu.ifg.persist.SQLiteDAO.ProdutoDaoSqlite;
 import br.edu.ifg.util.MyApp;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.ContextMenu;
 
 public class ActivityLista extends AppCompatActivity {
 
@@ -21,21 +26,57 @@ public class ActivityLista extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-        //ListView
+        //Pega a referência para a ListView pelo seu ID
         ListView listView = (ListView) findViewById(R.id.lstItens);
+        //Define um List que recebe um ArrayList de produtos do método listarTodos
         List<Produto> produtos = produtoDaoSqlite.listarTodos();
+        //Cria um Adapter de produtos passando o layout simples para cada item
         ArrayAdapter<Produto> adapter = new ArrayAdapter<Produto>(MyApp.getContext(), android.R.layout.simple_list_item_1,produtos);
+        //Adiciona esse adapter na ListView
         listView.setAdapter(adapter);
 
 
+        //Cria um menu de contexto no ListView
+        listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenuInfo menuInfo) {
+                //Adiciona os itens do menu pasaando os parâmetros
+                //(Group id, ItemId, Oder, Text
+                contextMenu.add(Menu.NONE, 1,Menu.NONE,"Deletar");
+                contextMenu.add(Menu.NONE, 2, Menu.NONE, "Alterar");
+
+            }
+
+
+
+            public boolean onContextItemSelected(MenuItem item) {
+                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                int position = menuInfo.position;
+                switch (item.getItemId()) {
+                    case 1: Toast.makeText(MyApp.getContext(),"Deletar", Toast.LENGTH_LONG).show();
+                    return true;
+
+                    default:
+                        return ActivityLista.super.onContextItemSelected(item);
+                }
+            }
+
+            });//Fim do contexto
+
+
+
+        /*
+        //Captura o id do item clicado
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String codigo;
-                Toast.makeText(MyApp.getContext(),"id " + i,Toast.LENGTH_LONG).show();
+                //Toast.makeText(MyApp.getContext(),"id " + i,Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
+
+
 
     }
 

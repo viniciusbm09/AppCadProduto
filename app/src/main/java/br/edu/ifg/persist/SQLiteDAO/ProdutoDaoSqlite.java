@@ -57,13 +57,22 @@ public class ProdutoDaoSqlite extends GenericDaoSqlite implements ProdutoDAO {
 
     @Override
     public void alterar(Produto p) {
+        SQLiteDatabase db = getWritebleDB();
+        ContentValues values = new ContentValues();
+        values.put("nome", p.getNome());
+        values.put("vlUnitario", p.getVlUnitario());
+        values.put("estoque", p.getEstoque());
+        String[] whereArgs = new String[] {String.valueOf(p.getId())};
+
+
+        db.update("produtos",values,"_id=?",whereArgs);
 
     }
 
     @Override
     public void excluir(Produto p) {
         DatabaseHelper helper = DatabaseHelper.getInstance(MyApp.getContext());
-        SQLiteDatabase db = getReadableDB();
+        SQLiteDatabase db =getWritebleDB();
         Cursor cursor = db.rawQuery("DELETE * from produtos where _id="+ p.getId(), null);
 
     }
