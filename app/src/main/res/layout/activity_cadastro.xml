@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:inputType="numberDecimal"
             />
 
         <TextView
@@ -55,6 +56,7 @@
             android:id="@+id/edtEstoque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:layout_marginLeft="10dp"/>
 
         <Button
@@ -63,6 +65,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gravar dados"/>
+        <Button
+            android:id="@+id/btnExcluir"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Excluir"/>
+        <Button
+            android:id="@+id/btnAlterar"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Alterar"/>
 
 
     </LinearLayout>

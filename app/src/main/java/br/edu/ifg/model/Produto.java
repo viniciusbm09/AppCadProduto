@@ -5,7 +5,7 @@ public class Produto {
     //Atributos
     private int id;
     private String nome;
-    private double vlUnitario;
+    private float vlUnitario;
     private int estoque;
 
 
@@ -20,11 +20,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getVlUnitario() {
+    public float getVlUnitario() {
         return vlUnitario;
     }
 
-    public void setVlUnitario(double vlUnitario) {
+    public void setVlUnitario(float vlUnitario) {
         this.vlUnitario = vlUnitario;
     }
 

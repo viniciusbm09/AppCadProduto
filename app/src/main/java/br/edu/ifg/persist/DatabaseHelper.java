@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " nome TEXT not null, " +
                 "vlUnitario REAL not null, "+
-                "estoque REAL not null)";
+                "estoque INT not null)";
 
         sqLiteDatabase.execSQL(ddl);
     }
